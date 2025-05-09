@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spiritual-tracker-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spiritual-tracker
+  template:
+    metadata:
+      labels:
+        app: spiritual-tracker
+    spec:
+      containers:
+      - name: spiritual-tracker-container
+        image: your-dockerhub-username/spiritual-tracker-app
+        ports:
+        - containerPort: 8081
