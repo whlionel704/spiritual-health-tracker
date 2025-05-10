@@ -13,7 +13,8 @@ spec:
         app: spiritual-tracker
     spec:
       containers:
-      - name: spiritual-tracker-container
-        image: your-dockerhub-username/spiritual-tracker-app
+      - name: spiritual-tracker-app
+        image: spiritual-tracker-app
+        imagePullPolicy: Never
         ports:
         - containerPort: 8081
