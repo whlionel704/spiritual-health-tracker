@@ -23,6 +23,7 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
           
+
       - name: Build Spring Boot JAR
         run: |
           mvn clean package -DskipTests
