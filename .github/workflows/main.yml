@@ -23,9 +23,8 @@ jobs:
           distribution: 'temurin'
 
       - name: Build Spring Boot JAR
-        shell: pwsh
         run: |
-          mvn.cmd clean package -DskipTests
+          mvn clean package -DskipTests
 
       - name: Build Docker image
         run: |
