@@ -11,9 +11,4 @@ public class HealthController {
     public String getHealth() {
         return "all good";
     }
-
-    @GetMapping("/ci-cd")
-    public String getHealthCiCd() {
-        return "all good";
-    }
 }
