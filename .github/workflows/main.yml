@@ -25,7 +25,7 @@ jobs:
       - name: Build Spring Boot JAR
         shell: cmd
         run: |
-          call mvnw.cmd clean package -DskipTests
+          call ".\mvnw.cmd" clean package -DskipTests
 
       - name: Build Docker image
         run: |
