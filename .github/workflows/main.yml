@@ -21,15 +21,15 @@ jobs:
         with:
           java-version: '23'
           distribution: 'temurin'
-
-      - name: Build Docker image
-        run: |
-          docker build -t spiritual-tracker-app .
-
+          cache: 'maven'
+          
       - name: Build Spring Boot JAR
         run: |
           mvn clean package -DskipTests
-
+          
+      - name: Build Docker image
+        run: |
+          docker build -t spiritual-tracker-app .
 
       - name: Load image into Minikube
         run: |
