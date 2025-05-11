@@ -1,0 +1,40 @@
+name: CI/CD Pipeline - Spring Boot App to Minikube
+
+on:
+  push:
+    branches: [main]  # or your development branch
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '23'
+          distribution: 'temurin'
+
+      - name: Build Spring Boot JAR
+        run: |
+          ./mvnw clean package -DskipTests
+
+      - name: Build Docker image
+        run: |
+          docker build -t spiritual-tracker-app .
+
+      - name: Load image into Minikube
+        run: |
+          minikube image load spiritual-tracker-app
+
+      - name: Apply Kubernetes manifests
+        run: |
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply -f k8s/service.yaml
+
+      - name: Restart Deployment
+        run: |
+          kubectl rollout restart deployment spiritual-tracker-deployment
