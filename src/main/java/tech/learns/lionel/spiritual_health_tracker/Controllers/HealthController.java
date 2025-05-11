@@ -11,4 +11,9 @@ public class HealthController {
     public String getHealth() {
         return "all good";
     }
+
+    @GetMapping("/cicd")
+    public String getTestCiCd() {
+        return "ci/cd pipeline is working";
+    }
 }
