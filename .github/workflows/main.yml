@@ -30,10 +30,10 @@ jobs:
         run: |
           docker build -t spiritual-tracker-app .
 
-      - name: Load image into Minikube
-        shell: windows-powershell
-        run: |
-          minikube image load spiritual-tracker-app
+      # - name: Load image into Minikube
+      #   shell: cmd
+      #   run: |
+      #     minikube image load spiritual-tracker-app
 
       - name: Apply Kubernetes manifests
         run: |
