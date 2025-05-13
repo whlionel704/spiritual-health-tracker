@@ -31,7 +31,6 @@ jobs:
           docker build -t spiritual-tracker-app .
 
       - name: Load image into Minikube
-        shell: cmd
         run: |
           minikube image load spiritual-tracker-app
 
