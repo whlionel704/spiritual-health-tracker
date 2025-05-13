@@ -22,22 +22,30 @@ jobs:
           java-version: '23'
           distribution: 'temurin'
 
+      - name: Generate unique image tag
+        id: vars
+        run: echo "IMAGE_TAG=build-$(date +%Y%m%d%H%M%S)" >> $GITHUB_ENV
+
       - name: Build Spring Boot JAR
         run: |
           mvn clean package -DskipTests
           
       - name: Build Docker image
         run: |
-          docker build -t spiritual-tracker-app:latest .
+          docker build -t spiritual-tracker-app:$IMAGE_TAG .
 
       - name: Load image into Minikube
         run: |
-          minikube image load spiritual-tracker-app:latest
+          minikube image load spiritual-tracker-app:$IMAGE_TAG
 
-      - name: Apply Kubernetes manifests
+      - name: Replace image tag in deployment and apply
         run: |
-          kubectl apply -f deployment.yaml --validate=false
-          kubectl apply -f service.yaml --validate=false
+          sed "s|image: spiritual-tracker-app.*|image: spiritual-tracker-app:$IMAGE_TAG |" deployment.yaml | kubectl apply -f -
+          kubectl apply -f service.yaml
+
+      - name: Delete old pods
+        run: |
+          kubectl delete pod -l app=spiritual-tracker
 
       - name: Restart Deployment
         run: |
