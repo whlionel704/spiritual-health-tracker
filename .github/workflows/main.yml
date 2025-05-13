@@ -39,10 +39,10 @@ jobs:
           kubectl apply -f deployment.yaml --validate=false
           kubectl apply -f service.yaml --validate=false
 
-      - name: Forward port
-        run: |
-          kubectl port-forward service/spiritual-tracker-service 8081:8081
-
       - name: Restart Deployment
         run: |
           kubectl rollout restart deployment spiritual-tracker-deployment
+
+      - name: Forward port
+        run: |
+          kubectl port-forward service/spiritual-tracker-service 8081:8081
