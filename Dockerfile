@@ -9,7 +9,7 @@ ARG JAR_FILE=target/spiritual-health-tracker-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE} app.jar
 
 # Expose the port the app runs on
-EXPOSE 8081
+EXPOSE 8080
 
 # Run the Spring Boot application
 ENTRYPOINT ["java", "-jar", "app.jar"]
