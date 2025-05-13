@@ -15,6 +15,6 @@ spec:
       containers:
       - name: spiritual-tracker-app
         image: spiritual-tracker-app:latest
-        imagePullPolicy: Never
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
