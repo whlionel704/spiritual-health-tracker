@@ -34,3 +34,6 @@ build/
 
 ### resources ###
 application.properties
+
+### CI/CD ###
+actions-runner

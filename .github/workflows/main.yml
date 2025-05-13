@@ -30,15 +30,19 @@ jobs:
         run: |
           docker build -t spiritual-tracker-app .
 
-      # - name: Load image into Minikube
-      #   shell: cmd
-      #   run: |
-      #     minikube image load spiritual-tracker-app
+      - name: Load image into Minikube
+        shell: cmd
+        run: |
+          minikube image load spiritual-tracker-app
 
       - name: Apply Kubernetes manifests
         run: |
           kubectl apply -f deployment.yaml --validate=false
           kubectl apply -f service.yaml --validate=false
+
+      - name: Forward port
+        run: |
+          kubectl port-forward service/spiritual-tracker-service 8081:32409
 
       - name: Restart Deployment
         run: |
