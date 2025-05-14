@@ -1,41 +1,39 @@
 package tech.learns.lionel.spiritual_health_tracker.Entities;
-
 import lombok.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
-//@Entity
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@Table(name = "journal")
+@Table(name = "journal")
 public class Journal {
 
-    // @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // @Column(name = "id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    //@Column(name = "body")
+    @Column(name = "body")
     private String content;
 
-    // @ElementCollection
-    // @Column(name = "verses")
+    @ElementCollection
+    @Column(name = "verses")
     private List<String> verses;
 
-    //@Column(name = "createdAt")
+    @Column(name = "createdAt")
     private LocalDateTime createdAt;
 
-    //@Column(name = "updatedAt")
+    @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 
-    // @ManyToOne
-    // @JoinColumn(name = "member")
+    @ManyToOne
+    @JoinColumn(name = "member_id")
     private Member member;
-
-    
 
     // Getters
     public Long getId() {

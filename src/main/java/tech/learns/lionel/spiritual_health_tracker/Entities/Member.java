@@ -1,40 +1,42 @@
 package tech.learns.lionel.spiritual_health_tracker.Entities;
-
+import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.List;
 
-//@Entity
+
+@Entity
 // @Getter
 // @Setter
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-// @Table(name = "member")
+@Table(name = "member")
 public class Member {
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // @Column(name = "id")
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    //@Column(name = "name")
+    @Column(name = "name")
     private String name;
 
-    //@Column(name = "age")
+    @Column(name = "age")
     private Integer age;
 
-    //@Column(name = "email")
+    @Column(name = "email")
     private String email;
 
-    //@Column(name = "contact")
+    @Column(name = "contact")
     private String contact;
 
-    // @ElementCollection
-    // @Column(name = "hobbies")
+    @ElementCollection
+    @Column(name = "hobbies")
     private List<String> hobbies;
 
-    // @ElementCollection
-    // @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    // private List<Journal> journals;
+    @ElementCollection
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Journal> journals;
 
     public Long getId() {
         return id;
