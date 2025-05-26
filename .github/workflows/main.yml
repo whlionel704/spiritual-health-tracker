@@ -45,9 +45,9 @@ jobs:
 
       - name: Apply PostgreSQL deployment and service
         run: |
-          kubectl apply -f k8s/postgres-deployment.yaml
-          kubectl apply -f k8s/postgres-service.yaml
-          
+          kubectl apply -f postgres-deployment.yaml
+          kubectl apply -f postgres-service.yaml
+
       - name: Delete old pods
         run: |
           kubectl delete pod -l app=spiritual-tracker
