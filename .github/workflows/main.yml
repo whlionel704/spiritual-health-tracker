@@ -55,10 +55,10 @@ jobs:
 
       - name: Restart Deployment
         run: |
-          kubectl rollout restart deployment spiritual-tracker-deployment
-          kubectl rollout restart deployment postgres-deployment
+          kubectl rollout restart deployment spiritual-tracker-deployment 
+          kubectl rollout restart deployment postgres-deployment 
           
       - name: Wait for deployment to complete
         run: |
-          kubectl rollout status deployment spiritual-tracker-deployment
-          kubectl rollout status deployment postgres-deployment
+          kubectl rollout status deployment spiritual-tracker-deployment --timeout=60s
+          kubectl rollout status deployment postgres-deployment --timeout=60s
