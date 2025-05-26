@@ -15,6 +15,7 @@ spec:
       containers:
       - name: postgres
         image: postgres:__IMAGE_TAG__
+        imagePullPolicy: Never
         ports:
         - containerPort: 5432
         env:
