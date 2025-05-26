@@ -40,9 +40,14 @@ jobs:
 
       - name: Replace image tag in deployment and apply
         run: |
-          sed "s|image: spiritual-tracker-app.*|image: spiritual-tracker-app:$IMAGE_TAG |" deployment.yaml | kubectl apply -f -
-          kubectl apply -f service.yaml
+          sed "s|image: spiritual-tracker-app.*|image: spiritual-tracker-app:$IMAGE_TAG |" spiritual-tracker-deployment.yaml | kubectl apply -f -
+          kubectl apply -f spiritual-tracker-service.yaml
 
+      - name: Apply PostgreSQL deployment and service
+        run: |
+          kubectl apply -f k8s/postgres-deployment.yaml
+          kubectl apply -f k8s/postgres-service.yaml
+          
       - name: Delete old pods
         run: |
           kubectl delete pod -l app=spiritual-tracker
