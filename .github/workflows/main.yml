@@ -38,8 +38,8 @@ jobs:
         run: |
           minikube image load spiritual-tracker-app:$IMAGE_TAG
 
-      - name: Apply PostgreSQL PVC
-        run: kubectl apply -f postgres-pvc.yaml  # Optional
+      #- name: Apply PostgreSQL PVC
+       # run: kubectl apply -f postgres-pvc.yaml  
 
       - name: Apply PostgreSQL deployment and service
         run: |
