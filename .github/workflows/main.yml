@@ -57,6 +57,7 @@ jobs:
       - name: Delete old pods
         run: |
           kubectl delete pod -l app=spiritual-tracker
+          kubectl delete pod -l app=postgres
 
       - name: Restart Deployment
         run: |
