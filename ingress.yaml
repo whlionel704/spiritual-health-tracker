@@ -11,8 +11,8 @@ spec:
     - host: spiritual.health.tracker.app.ingress.local
       http:
         paths:
-          - path: /health
-            pathType: Exact
+          - path: /
+            pathType: Prefix
             backend:
               service:
                 name: spiritual-tracker-service
