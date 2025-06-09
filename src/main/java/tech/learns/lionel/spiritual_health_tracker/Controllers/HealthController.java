@@ -12,8 +12,8 @@ public class HealthController {
         return "all good";
     }
 
-    @GetMapping("/test1")
+    @GetMapping("/test2")
     public String getTestCiCd() {
-        return "ci/cd pipeline is working test1";
+        return "ci/cd pipeline is working test2";
     }
 }
