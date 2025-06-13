@@ -9,7 +9,7 @@ How to push changes to github actions CI/CD pipeline:
 - git add .
 - git commit -m commit-message
 - git push
-- cd actions runner && ./run.sh
+- cd actions-runner && ./run.sh
 
 How to setup kubernetes:
 - open docker
