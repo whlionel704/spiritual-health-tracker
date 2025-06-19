@@ -15,7 +15,7 @@ How to setup kubernetes:
 - open docker
 - minikube start --driver=docker
 How to start the spiritual tracker app:
-- minikube service spiritual-tracker-deployment  url
+- minikube service spiritual-tracker-deployment url
 How to connect the k8 spiritual tracker app to the k8 db:
 - kubectl port-forward service/postgres-service 5433:5432
 
