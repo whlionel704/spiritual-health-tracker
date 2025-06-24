@@ -14,11 +14,7 @@ How to push changes to github actions CI/CD pipeline:
 How to setup kubernetes:
 - open docker
 - minikube start --driver=docker
-How to start the spiritual tracker app:
-- minikube service spiritual-tracker-deployment url
-How to connect the k8 spiritual tracker app to the k8 db:
-- kubectl port-forward service/postgres-service 5433:5432
-
+- cd scripts && ./start-dev.sh -> this will do kubectl port-forward service/postgres-service 5433:5432 and minikube service spiritual-tracker-deployment --url BOTH at the same time
 Ingress Controller (still figuring out):
 minikube tunnel
 curl --resolve spiritual.health.tracker.app.ingress.local:80:192.168.49.2 -i http://spiritual.health.tracker.app.ingress.local
