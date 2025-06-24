@@ -49,7 +49,7 @@ jobs:
       - name: Wait for PostgreSQL to be ready
         run: kubectl rollout status deployment postgres-deployment --timeout=60s
 
-      - name: Deploy Spring Boot App
+      - name: Deploy Spring Boot App with image tag
         run: |
           sed "s|__IMAGE_TAG__|$IMAGE_TAG|" spiritual-tracker-deployment.yaml | kubectl apply -f -
           kubectl apply -f spiritual-tracker-service.yaml
