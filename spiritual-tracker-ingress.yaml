@@ -3,10 +3,12 @@ kind: Ingress
 metadata:
   name: ingress
   namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
-    - host: spiritual-health-tracker-app.local
+    - host: "spiritual-health-tracker-app.local"
       http:
         paths:
           - path: /
@@ -15,4 +17,4 @@ spec:
               service:
                 name: spiritual-tracker-service
                 port:
-                  number: 8080
+                  number: 80
