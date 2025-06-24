@@ -8,7 +8,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: spiritual.health.tracker-app.local
+    - host: spiritual-health-tracker-app.local
       http:
         paths:
           - path: /
