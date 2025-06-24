@@ -5,7 +5,6 @@ metadata:
 spec:
   selector:
     app: spiritual-tracker
-  type: NodePort
   ports:
     - protocol: TCP
       port: 8080
