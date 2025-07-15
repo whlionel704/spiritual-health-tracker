@@ -54,16 +54,16 @@ jobs:
           sed "s|__IMAGE_TAG__|$IMAGE_TAG|" spiritual-tracker-deployment.yaml | kubectl apply -f -
           kubectl apply -f spiritual-tracker-service.yaml
       
-      - name: Deploy ingress
-        run: |
-          kubectl delete ingress ingress
-          kubectl apply -f spiritual-tracker-ingress.yaml
+      # - name: Deploy ingress
+      #   run: |
+      #     kubectl delete ingress ingress
+      #     kubectl apply -f spiritual-tracker-ingress.yaml
           
       - name: Delete old pods
         run: |
           kubectl delete pod -l app=spiritual-tracker
           kubectl delete pod -l app=postgres
-          kubectl delete pod -l app.kubernetes.io/name=ingress-nginx -n ingress-nginx
+          # kubectl delete pod -l app.kubernetes.io/name=ingress-nginx -n ingress-nginx
 
       - name: Restart Deployment
         run: |
