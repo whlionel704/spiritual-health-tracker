@@ -10,14 +10,17 @@ nohup kubectl port-forward service/postgres-service 5433:5432 > portforward-db.l
 
 sleep 3
 
-APP_URL="http://spiritual-health-tracker-app.local"
-echo "🌐 Opening app at: $APP_URL"
+echo "🌐 Getting URL for spiritual-tracker-deployment..."
+APP_URL=$(minikube service spiritual-tracker-deployment --url)
 
-# Try to open in browser depending on OS/environment
+echo "✅ App URL: $APP_URL"
+
+# Optionally open in browser
 if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null; then
-    # WSL - try opening in Windows default browser
     powershell.exe start "$APP_URL" || explorer.exe "$APP_URL" || echo "🔗 Visit manually: $APP_URL"
 else
-    # Native Linux
     xdg-open "$APP_URL" 2>/dev/null || (command -v open >/dev/null && open "$APP_URL") || echo "🔗 Visit manually: $APP_URL"
 fi
+
+# Keep script running if you want the port-forward to stay alive
+wait
